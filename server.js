@@ -18,6 +18,29 @@ app.get('/', function(request, response){
     response.sendFile(path.join(__dirname, '/weather.html'))
 })
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.use(function (req, res, next) {
+    // Website you wish to allow to connect
+    const allowedOrigins = ['https://editor.swagger.io', 'https://hoppscotch.io'];
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    }
+    // Request methods you wish to allow eg: GET, POST, OPTIONS, PUT, PATCH, DELETE
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    // res.setHeader('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
+});
 
 function get_weather(request, response)
 {
