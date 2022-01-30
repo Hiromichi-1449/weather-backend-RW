@@ -62,11 +62,11 @@ function hello(request, response){
 
 function authorization(request, response)
 {
-    response.json(
-        {
-            "User": "Ricardo",
-            "password": "*********************",
-            "Boolean": true
-        }
-    )
+    var username = request.body.username;
+    var password = request.body.password;
+    // response.send(request.body);
+    console.log('body is ', request.body);
+    response.json({
+        "token": "a_very_secret_token_for_" + username
+    })
 }
