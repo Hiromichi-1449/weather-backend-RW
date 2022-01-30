@@ -1,25 +1,13 @@
 "use strict"
 
 var express = require('express')
+const bodyParser = require("body-parser");
 var path = require('path')
 var app = express()
 
 app.listen(3000)
 console.log('Node.js Express server is running on part 3000...')
 
-app.get('/data/2.5/weather', get_weather)
-app.get('/v1/hello', hello)
-app.get('/v1/autho', authorization)
-//express.js response
-app.get('/', function(request, response) {
-    response.sendFile(path.join(__dirname, '/hello.html'))
-})
-app.get('/', function(request, response){
-    response.sendFile(path.join(__dirname, '/weather.html'))
-})
-
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
 app.use(function (req, res, next) {
     // Website you wish to allow to connect
@@ -41,6 +29,21 @@ app.use(function (req, res, next) {
     // Pass to next layer of middleware
     next();
 });
+
+app.get('/v1/weather', get_weather)
+app.get('/v1/hello', hello)
+app.get('/v1/autho', authorization)
+//express.js response
+app.get('/', function(request, response) {
+    response.sendFile(path.join(__dirname, '/hello.html'))
+})
+app.get('/', function(request, response){
+    response.sendFile(path.join(__dirname, '/weather.html'))
+})
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 
 function get_weather(request, response)
 {
