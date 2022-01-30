@@ -30,21 +30,10 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.get('/v1/weather', get_weather)
-app.get('/v1/hello', hello)
-app.get('/v1/autho', authorization)
-//express.js response
-app.get('/', function(request, response) {
-    response.sendFile(path.join(__dirname, '/hello.html'))
-})
-app.get('/', function(request, response){
-    response.sendFile(path.join(__dirname, '/weather.html'))
-})
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
+app.get('/v1/weather', get_weather)
 function get_weather(request, response)
 {
     response.json
@@ -53,6 +42,7 @@ function get_weather(request, response)
     )
 }
 
+app.get('/v1/hello', hello)
 function hello(request, response){
     response.json
     ( 
@@ -60,6 +50,7 @@ function hello(request, response){
     )
 }
 
+app.post('/v1/auth', authorization)
 function authorization(request, response)
 {
     var username = request.body.username;
@@ -67,6 +58,6 @@ function authorization(request, response)
     // response.send(request.body);
     console.log('body is ', request.body);
     response.json({
-        "token": "a_very_secret_token_for_" + username
+        "token": "dns:16Zs|g#@HmW" + username
     })
 }
