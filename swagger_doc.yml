@@ -1,0 +1,91 @@
+swagger: "2.0"
+info:
+  description: "This is the swagger doc practice for get & post services:"
+  version: "1.0.0"
+  title: "Swagger Doc practice"
+  termsOfService: "http://localhost:3000/v1"
+  contact:
+    email: "wuhun@oregonstate.edu"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost:3000"
+basePath: "/"
+tags:
+- name: "v1"
+  description: "3 different endpoints"
+schemes:
+- "http"
+paths:
+  /v1/weather:
+    get:
+      tags:
+      - "weather"
+      summary: "get the local weather"
+      description: "This endpoint retrieves the local weather of Corvallis"
+      operationId: "get_weather"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+
+  /v1/hello:
+    get:
+      tags:
+      - "greetings"
+      summary: "Hello!"
+      description: "This endpoint generates greetings when users execute"
+      operationId: "hello"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "string"
+        in: "query"
+        type: "string"
+        items:
+          enum:
+          - "available"
+          - "pending"
+          - "sold"
+          default: "available"
+        collectionFormat: "multi"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Pet"
+        "400":
+          description: "Invalid status value"
+          
+  /v1/auth:
+     post:
+      tags:
+      - "auth"
+      summary: "User Authorization"
+      description: "providing a mock token when users giving their username and passwords"
+      operationId: "mock_token"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "name"
+        in: "formData"
+        description: "please give your username"
+        required: true
+        type: "string"
+      - name: "password"
+        in: "formData"
+        description: "please type your password"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "Correct output"
+        "405":
+          description: "Invalid input"
