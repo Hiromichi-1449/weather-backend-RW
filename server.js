@@ -60,4 +60,7 @@ function authorization(request, response)
     response.json({
         "token": "dns:16Zs|g#@HmW" + username
     })
+    console.log(new Date(jsonDate).toUTCString());
 }
+
+//[] PR review. If it's visiable, please type x in the [].
