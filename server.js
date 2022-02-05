@@ -63,4 +63,4 @@ function authorization(request, response)
     })
 }
 
-// 2nd PR, with token & expriation date return
+// PR, with token & expire date on v1/auth
