@@ -58,9 +58,9 @@ function authorization(request, response)
     // response.send(request.body);
     console.log('body is ', request.body);
     response.json({
-        "token": "dns:16Zs|g#@HmW" + username
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUmljYXJkbyBXdSIsImV4cGlyZWQgZGF0ZSI6IkZlYi4gMjR0aCwgMjAyMi4ifQ.n_3i2eW-C8CRNOpdx5qkzBIMUb7O_Z4EPPZmDL-Jlgk" + username,
+        "expire": "2022-02-24T14:14:30:000Z"
     })
-    console.log(new Date(jsonDate).toUTCString());
 }
 
-//[] PR review. If it's visiable, please type x in the [].
+// PR, with token & expire date on v1/auth
