@@ -58,7 +58,7 @@ function authorization(request, response)
     // response.send(request.body);
     console.log('body is ', request.body);
     response.json({
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUmljYXJkbyBXdSIsImV4cHIuIGR1cmF0aW9uIjoiNSBkYXlzIn0.LX1JdKgoMkHRfIOD_KQApBLN6NIp1mAaPzNXqctGDb8" + username,
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUmljYXJkbyBXdSIsImV4cHIuIGR1cmF0aW9uIjoiMTkgZGF5cyJ9.wAnpPZIgO30-gIrVEK2vQT19r9SRWhmUEA4wOppM384" + username,
         "expire": "2022-02-24T14:14:30:000Z"
     })
 }
