@@ -1,16 +1,19 @@
-swagger: "2.0"
+openapi: "3.0.0"
+
 info:
   description: "This is the swagger doc practice for get & post services:"
   version: "1.0.0"
   title: "Swagger Doc practice"
-  termsOfService: "http://localhost:3000/v1"
+  termsOfService: "http://swagger.io/terms"
   contact:
     email: "wuhun@oregonstate.edu"
   license:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "localhost:3000"
-basePath: "/"
+# where my server is
+servers: 
+- url: "44.197.118.88:3000"
+
 tags:
 - name: "v1"
   description: "3 different endpoints"
@@ -31,6 +34,8 @@ paths:
       responses:
         "200":
           description: "successful operation"
+        "400":
+          description: "Invalid status value" 
 
   /v1/hello:
     get:
@@ -89,3 +94,19 @@ paths:
           description: "Correct output"
         "405":
           description: "Invalid input"
+
+components:
+  schemes:
+    login:
+      type: object
+      properties: 
+        access-token:
+          type: string
+        expires:
+          type: string
+          format: date-time
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
