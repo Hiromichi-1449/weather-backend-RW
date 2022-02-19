@@ -34,8 +34,8 @@ paths:
       responses:
         "200":
           description: "successful operation"
-        "400":
-          description: "Invalid status value" 
+        "401":
+          description: "Unauthorized" 
 
   /v1/hello:
     get:
@@ -64,8 +64,8 @@ paths:
             type: "array"
             items:
               $ref: "#/definitions/Pet"
-        "400":
-          description: "Invalid status value"
+        "401":
+          description: "Unauthorized"
           
   /v1/auth:
      post:
@@ -92,8 +92,8 @@ paths:
       responses:
         "200":
           description: "Correct output"
-        "405":
-          description: "Invalid input"
+        "401":
+          description: "Unauthorized"
 
 components:
   schemes:
